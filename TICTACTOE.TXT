@@ -105,7 +105,7 @@
 4585 if i$ = "8" then 4640
 4587 if i$ = "9" then 4645
 4590 print "that is a not a valid space."
-4595 print "enter a letter between a and i."
+4595 print "enter a number between 1 and 9."
 4600 goto 4545
 4605 if b$(0,0) <> " " then 4650
 4606 b$(0,0) = t$
