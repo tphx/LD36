@@ -1,0 +1,165 @@
+9 rem ##########main variables##########
+10 dim b$(2,2)
+11 x$ = "x"
+12 y$ = "y"
+13 i$ = ""
+15 rem ##########main variables#########
+99 rem #########game process############
+100 gosub 1001
+105 gosub 2005 
+130 gosub 1505
+140 gosub 4500
+150 gosub 3010
+155 gosub 5510
+160 gosub 5005
+165 gosub 1001
+170 goto 140
+175 rem #########game process###########
+900 end
+1000 rem ########clear screen###########
+1001 print chr$(147)
+1002 return
+1007 rem ########clear screen###########
+1500 rem ########randomize turn#########
+1505 if int(rnd(1) * 2) = 0 then 1520
+1510 t$ = x$
+1515 goto 1525 
+1520 t$ = y$
+1525 return
+1530 rem ########randomize turn#########
+1999 rem #########clear moves###########
+2005 for m = 0 to 2
+2010 for n = 0 to 2
+2015 b$(m,n) = " "
+2020 next
+2025 next
+2030 return
+2035 rem #########clear moves###########
+2500 rem ########print gameboard########
+2505 print b$(0,0) "][ " b$(0,1) "][";
+2510 print b$(0,2)
+2515 print b$(1,0) "][ " b$(1,1) "][";
+2520 print b$(1,2)
+2525 print b$(2,0) "][ " b$(2,1) "][";
+2530 print b$(2,2)
+2534 return
+2535 rem ########print gameboard########
+2999 rem ######check for winner#########
+3009 rem columns
+3010 if b$(0,0) = t$ and b$(1,0) = t$ and b$(2,0) = t$ then 3080
+3015 if b$(0,1) = t$ and b$(1,1) = t$ and b$(2,1) = t$ then 3095
+3020 if b$(0,2) = t$ and b$(1,2) = t$ and b$(2,2) = t$ then 3105
+3024 rem rows
+3025 if b$(0,0) = t$ and b$(0,1) = t$ and b$(0,2) = t$ then 3050
+3030 if b$(1,0) = t$ and b$(1,1) = t$ and b$(1,2) = t$ then 3060	
+3035 if b$(2,0) = t$ and b$(2,1) = t$ and b$(2,2) = t$ then 3070
+3039 rem diagonals
+3040 if b$(0,0) = t$ and b$(1,1) = t$ and b$(2,2) = t$ then 3115
+3045 if b$(2,0) = t$ and b$(1,1) = t$ and b$(0,2) = t$ then 3115
+3047 return
+3048 rem ######check for winner#########
+3049 rem #######win messages ###########
+3050 w$ = "top row"
+3055 goto 3125
+3060 w$ = "middle row"
+3065 goto 3125
+3070 w$ = "bottom row"
+3075 goto 3125
+3080 w$ = "left column"
+3085 goto 3125
+3095 w$ = "middle column"
+3100 goto 3125
+3105 w$ = "right column"
+3110 goto 3125
+3115 gosub 2505
+3117 print t$ " wins diagonally."
+3120 goto 3130
+3125 gosub 2505
+3127 print t$ " wins on the " w$ "."
+3130 print "enter n to start a new game or q to "
+3132 print "quit."
+3135 input i$
+3140 if i$ = "n" then 100
+3145 if i$ = "q" then 900
+3150 goto 3130
+3154 rem #######win messages ###########
+4498 rem #######get player move#########
+4500 gosub 1001
+4501 print "current board:"
+4503 gosub 2505
+4504 print
+4505 print "enter the space you would like to claim:"
+4510 print "1][2][3"
+4515 print "-------"
+4520 print "4][5][6"
+4525 print "-------"
+4530 print "7][8][9"
+4532 print
+4535 print "it's " t$ "'s turn to move."
+4545 input i$
+4550 if i$ = "1" then 4605
+4555 if i$ = "2" then 4610
+4560 if i$ = "3" then 4615
+4565 if i$ = "4" then 4620
+4570 if i$ = "5" then 4625
+4575 if i$ = "6" then 4630
+4580 if i$ = "7" then 4635
+4585 if i$ = "8" then 4640
+4587 if i$ = "9" then 4645
+4590 print "that is a not a valid space."
+4595 print "enter a letter between a and i."
+4600 goto 4545
+4605 if b$(0,0) <> " " then 4650
+4606 b$(0,0) = t$
+4607 goto 4665
+4610 if b$(0,1) <> " " then 4650
+4611 b$(0,1) = t$
+4612 goto 4665
+4615 if b$(0,2) <> " " then 4650
+4616 b$(0,2) = t$
+4617 goto 4665
+4620 if b$(1,0) <> " " then 4650
+4621 b$(1,0) = t$
+4622 goto 4665
+4625 if b$(1,1) <> " " then 4650
+4626 b$(1,1) = t$
+4627 goto 4665
+4630 if b$(1,2) <> " " then 4650
+4631 b$(1,2) = t$
+4632 goto 4665
+4635 if b$(2,0) <> " " then 4650
+4636 b$(2,0) = t$
+4637 goto 4665
+4640 if b$(2,1) <> " " then 4650
+4641 b$(2,1) = t$
+4642 goto 4665
+4645 if b$(2,2) <> " " then 4650
+4646 b$(2,2) = t$
+4647 goto 4665
+4650 print "that space is claimed."
+4655 print "pick an unclaimed space."
+4660 goto 4545
+4665 return
+4670 rem #######get player move#########
+4999 rem ########change turn############
+5005 if t$ = x$ then 5015
+5010 t$ = x$
+5012 goto 5020
+5015 t$ = y$
+5020 return
+5025 rem ########change turn############
+5500 rem #########tie check#############
+5510 oc% = 0
+5515 for n = 0 to 2
+5520 for m = 0 to 2
+5525 if b$(n,m) <> " " then 5535
+5530 goto 5540
+5535 oc% = oc% + 1
+5540 next
+5545 next
+5550 if oc% = 9 then 5560
+5555 return
+5560 gosub 2505
+5565 print "a tie has been reached."
+5570 goto 3130
+5575 rem #########tie check#############
