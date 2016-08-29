@@ -36,11 +36,11 @@
 2030 return
 2035 rem #########clear moves###########
 2500 rem ########print gameboard########
-2505 print b$(0,0) "][ " b$(0,1) "][";
+2505 print b$(0,0) "][" b$(0,1) "][";
 2510 print b$(0,2)
-2515 print b$(1,0) "][ " b$(1,1) "][";
+2515 print b$(1,0) "][" b$(1,1) "][";
 2520 print b$(1,2)
-2525 print b$(2,0) "][ " b$(2,1) "][";
+2525 print b$(2,0) "][" b$(2,1) "][";
 2530 print b$(2,2)
 2534 return
 2535 rem ########print gameboard########
@@ -90,9 +90,7 @@
 4504 print
 4505 print "enter the space you would like to claim:"
 4510 print "1][2][3"
-4515 print "-------"
 4520 print "4][5][6"
-4525 print "-------"
 4530 print "7][8][9"
 4532 print
 4535 print "it's " t$ "'s turn to move."
